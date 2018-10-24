@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="hr">
+	<head>
+		<title>Programiranje web aplikacije</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta name="description" content="">
+		<meta name="keywords" content="">	
+		<meta name="author" content="Matej Jerković">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	</head>
+	<body>	
+		<h1>Najbolji nogometaši</h1>
+		<div>
+			<h2><a href="http://www.google.com/">Johan Cruyff<a/></h2>
+			<p>Hendrik Johannes Cruijff (25. travnja 1947. - 24. ožujka 2016.), bio je najbolji nizozemski i jedan od najboljih svjetskih nogometaša te jedan od najtrofejnijih trenera svih vremena. Rođen je u Amsterdamu.</p>
+		</div>
+		<hr/>
+		<br/>
+		<div>
+			<h2><a href="http://www.google.com/">Diego Maradona<a/></h2>
+			<p>Diego Armando Maradona (Buenos Aires, 30. listopada 1960.) je bivši argentinski nogometaš i izbornik, poslednji put je bio trener Al Wasla iz Ujedinjenih Arapskih Emirata.</p>
+		</div>
+		<hr/>
+		<br/>
+		<div>
+			<h2><a href="http://www.google.com/">Pele<a/></h2>
+			<p>Uz Diega Maradonu smatra se najboljim nogometašem u povijesti nogometa, kojim ga je 1999. godine proglasila FIFA.</p>
+		</div>
+	</body>
