@@ -3,45 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <title>Narudžba Dresa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      max-width: 700px;
-      margin: 30px auto;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #d9f3ff, #ffffff);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background: #fff;
       padding: 30px;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      background-color: #f9f9f9;
-      background-image: url('logo.PNG');
-      background-size: 300px;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%;
     }
 
     h2 {
       text-align: center;
+      margin-bottom: 25px;
+      color: #333;
     }
 
     label {
-      display: block;
       margin-top: 15px;
+      display: block;
+      color: #333;
+      font-weight: 600;
     }
 
-    select, input[type="text"], input[type="number"], button {
+    input[type="text"],
+    input[type="number"],
+    select {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
     }
 
     button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 25px;
       background-color: #28a745;
-      color: white;
-      font-size: 16px;
+      color: #fff;
       border: none;
-      border-radius: 4px;
-      margin-top: 20px;
+      border-radius: 6px;
+      font-size: 18px;
+      font-weight: bold;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
 
     button:hover {
@@ -50,69 +73,76 @@
 
     .images {
       display: flex;
-      justify-content: space-around;
-      margin-top: 20px;
+      justify-content: space-between;
+      margin-top: 30px;
       gap: 20px;
       flex-wrap: wrap;
     }
 
-    .images img {
-      width: 100%;
-      max-width: 300px;
-      border: 1px solid #ccc;
+    .image-box {
+      flex: 1 1 45%;
+      text-align: center;
+    }
+
+    .image-box img {
+      max-width: 100%;
       border-radius: 8px;
+      border: 1px solid #ddd;
     }
 
     .caption {
-      text-align: center;
-      font-weight: bold;
-      margin-top: 5px;
+      margin-top: 10px;
+      font-weight: 600;
+      color: #444;
     }
 
-    .image-box {
-      flex: 1;
-      min-width: 200px;
+    @media (max-width: 600px) {
+      .images {
+        flex-direction: column;
+        gap: 30px;
+      }
     }
   </style>
 </head>
 <body>
-  <h2>Narudžba Dresa</h2>
+  <div class="card">
+    <h2>Narudžba Dresa</h2>
+    <form id="orderForm">
+      <label for="name">Ime i prezime:</label>
+      <input type="text" id="name" name="name" required>
 
-  <form id="orderForm">
-    <label for="name">Ime i prezime:</label>
-    <input type="text" id="name" name="name" required>
+      <label for="size">Veličina:</label>
+      <select id="size" name="size" required>
+        <option value="">-- Odaberi veličinu --</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+      </select>
 
-    <label for="size">Veličina:</label>
-    <select id="size" name="size" required>
-      <option value="">-- Odaberi veličinu --</option>
-      <option value="S">S</option>
-      <option value="M">M</option>
-      <option value="L">L</option>
-      <option value="XL">XL</option>
-      <option value="XXL">XXL</option>
-    </select>
+      <label for="type">Tip narudžbe:</label>
+      <select id="type" name="type" required>
+        <option value="">-- Odaberi tip --</option>
+        <option value="Dres - 30€">Dres (30€)</option>
+        <option value="Komplet - 50€">Komplet (Dres + Hlačice + Štucne) (50€)</option>
+      </select>
 
-    <label for="type">Tip narudžbe:</label>
-    <select id="type" name="type" required>
-      <option value="">-- Odaberi tip --</option>
-      <option value="Dres - 30€">Dres (30€)</option>
-      <option value="Komplet - 50€">Komplet (Dres + Hlačice + Štucne) (50€)</option>
-    </select>
+      <label for="number">Broj na dresu (0–99):</label>
+      <input type="number" id="number" name="number" min="0" max="99" required>
 
-    <label for="number">Broj na dresu (0–99):</label>
-    <input type="number" id="number" name="number" min="0" max="99" required>
+      <button type="submit">Pošalji narudžbu</button>
+    </form>
 
-    <button type="submit">Pošalji narudžbu</button>
-  </form>
-
-  <div class="images">
-    <div class="image-box">
-      <img src="dres.JPG" alt="Dres">
-      <div class="caption">Dres (30€)</div>
-    </div>
-    <div class="image-box">
-      <img src="komplet.JPG" alt="Komplet">
-      <div class="caption">Komplet (50€)</div>
+    <div class="images">
+      <div class="image-box">
+        <img src="dres.jpg" alt="Dres">
+        <div class="caption">Dres (30€)</div>
+      </div>
+      <div class="image-box">
+        <img src="komplet.jpg" alt="Komplet">
+        <div class="caption">Komplet (50€)</div>
+      </div>
     </div>
   </div>
 
