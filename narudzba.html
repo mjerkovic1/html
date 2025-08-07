@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <title>Narudžba Dresa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 30px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      background-image: url('logo.png');
+      background-size: 300px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    select, input[type="text"], button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .images {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+      gap: 20px;
+    }
+
+    .images img {
+      width: 45%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .caption {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Narudžba Dresa</h2>
+
+  <form id="orderForm">
+    <label for="name">Ime i prezime:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="size">Veličina:</label>
+    <select id="size" name="size" required>
+      <option value="">-- Odaberi veličinu --</option>
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+      <option value="XL">XL</option>
+      <option value="XXL">XXL</option>
+    </select>
+
+    <label for="type">Tip narudžbe:</label>
+    <select id="type" name="type" required>
+      <option value="">-- Odaberi tip --</option>
+      <option value="Dres - 30€">Dres (30€)</option>
+      <option value="Komplet - 50€">Komplet (Dres + Hlačice + Štucne) (50€)</option>
+    </select>
+
+    <button type="submit">Pošalji narudžbu</button>
+  </form>
+
+  <div class="images">
+    <div>
+      <img src="dres.jpg" alt="Dres">
+      <div class="caption">Dres (30€)</div>
+    </div>
+    <div>
+      <img src="komplet.jpg" alt="Komplet">
+      <div class="caption">Komplet (50€)</div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('orderForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const size = document.getElementById('size').value;
+      const type = document.getElementById('type').value;
+
+      if (!name || !size || !type) {
+        alert("Molimo ispunite sva polja.");
+        return;
+      }
+
+      const subject = encodeURIComponent("Nova narudžba dresa");
+      const body = encodeURIComponent(
+        `Ime i prezime: ${name}\nVeličina: ${size}\nTip narudžbe: ${type}`
+      );
+
+      const mailtoLink = `mailto:matej.jerkovic4@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = mailtoLink;
+    });
+  </script>
+</body>
+</html>
