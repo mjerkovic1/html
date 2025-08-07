@@ -28,7 +28,7 @@
       margin-top: 15px;
     }
 
-    select, input[type="text"], button {
+    select, input[type="text"], input[type="number"], button {
       width: 100%;
       padding: 8px;
       margin-top: 5px;
@@ -53,10 +53,12 @@
       justify-content: space-around;
       margin-top: 20px;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .images img {
-      width: 45%;
+      width: 100%;
+      max-width: 300px;
       border: 1px solid #ccc;
       border-radius: 8px;
     }
@@ -65,6 +67,11 @@
       text-align: center;
       font-weight: bold;
       margin-top: 5px;
+    }
+
+    .image-box {
+      flex: 1;
+      min-width: 200px;
     }
   </style>
 </head>
@@ -92,15 +99,18 @@
       <option value="Komplet - 50€">Komplet (Dres + Hlačice + Štucne) (50€)</option>
     </select>
 
+    <label for="number">Broj na dresu (0–99):</label>
+    <input type="number" id="number" name="number" min="0" max="99" required>
+
     <button type="submit">Pošalji narudžbu</button>
   </form>
 
   <div class="images">
-    <div>
+    <div class="image-box">
       <img src="dres.jpg" alt="Dres">
       <div class="caption">Dres (30€)</div>
     </div>
-    <div>
+    <div class="image-box">
       <img src="komplet.jpg" alt="Komplet">
       <div class="caption">Komplet (50€)</div>
     </div>
@@ -113,15 +123,26 @@
       const name = document.getElementById('name').value.trim();
       const size = document.getElementById('size').value;
       const type = document.getElementById('type').value;
+      const number = document.getElementById('number').value.trim();
 
-      if (!name || !size || !type) {
+      if (!name || !size || !type || number === "") {
         alert("Molimo ispunite sva polja.");
         return;
       }
 
+      if (isNaN(number) || number < 0 || number > 99) {
+        alert("Broj na dresu mora biti između 0 i 99.");
+        return;
+      }
+
+      const summary = `✅ Potvrdi narudžbu:\n\nIme i prezime: ${name}\nVeličina: ${size}\nTip narudžbe: ${type}\nBroj na dresu: ${number}\n\nŽeliš li poslati ovu narudžbu?`;
+      const confirmed = confirm(summary);
+
+      if (!confirmed) return;
+
       const subject = encodeURIComponent("Nova narudžba dresa");
       const body = encodeURIComponent(
-        `Ime i prezime: ${name}\nVeličina: ${size}\nTip narudžbe: ${type}`
+        `Ime i prezime: ${name}\nVeličina: ${size}\nTip narudžbe: ${type}\nBroj na dresu: ${number}`
       );
 
       const mailtoLink = `mailto:matej.jerkovic4@gmail.com?subject=${subject}&body=${body}`;
