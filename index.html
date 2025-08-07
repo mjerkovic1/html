@@ -3,43 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <title>Narudžba Dresa</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #d9f3ff, #ffffff);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, #16222A, #3A6073);
+      background-image: url('logo.PNG');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 300px;
+      background-attachment: fixed;
     }
 
-    .card {
-      background: #fff;
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
       padding: 30px;
+      background-color: rgba(255, 255, 255, 0.96);
       border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      max-width: 600px;
-      width: 100%;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
 
     h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 38px;
       text-align: center;
-      margin-bottom: 25px;
-      color: #333;
+      color: #d90429;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
     }
 
     label {
-      margin-top: 15px;
+      font-weight: bold;
+      color: #222;
       display: block;
-      color: #333;
-      font-weight: 600;
+      margin-top: 15px;
     }
 
     input[type="text"],
@@ -47,28 +51,28 @@
     select {
       width: 100%;
       padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
       font-size: 16px;
+      margin-top: 5px;
+      border: 2px solid #ccc;
+      border-radius: 6px;
     }
 
     button {
       width: 100%;
       padding: 12px;
-      margin-top: 25px;
-      background-color: #28a745;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
+      background-color: #d90429;
+      color: white;
       font-size: 18px;
       font-weight: bold;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      margin-top: 25px;
+      transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: #218838;
+      background-color: #a0031e;
     }
 
     .images {
@@ -86,27 +90,35 @@
 
     .image-box img {
       max-width: 100%;
-      border-radius: 8px;
-      border: 1px solid #ddd;
+      border-radius: 10px;
+      border: 3px solid #d90429;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     .caption {
       margin-top: 10px;
-      font-weight: 600;
-      color: #444;
+      font-weight: bold;
+      color: #333;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #ccc;
     }
 
     @media (max-width: 600px) {
       .images {
         flex-direction: column;
-        gap: 30px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="card">
+  <div class="container">
     <h2>Narudžba Dresa</h2>
+
     <form id="orderForm">
       <label for="name">Ime i prezime:</label>
       <input type="text" id="name" name="name" required>
@@ -145,6 +157,10 @@
       </div>
     </div>
   </div>
+
+  <footer>
+    © 2025 NK Rašk – Klub dizajn
+  </footer>
 
   <script>
     document.getElementById('orderForm').addEventListener('submit', function(event) {
